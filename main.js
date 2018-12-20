@@ -43,8 +43,6 @@ function subscribeUser() {
 }
 
 function updateSubscriptionOnServer(subscription) {
-  // TODO: Send subscription to application server
-
   const subscriptionJson = document.querySelector('.js-subscription-json');
   const subscriptionDetails = document.querySelector('.js-subscription-details');
 
@@ -89,7 +87,6 @@ function updateBtn(isSubscribed) {
     pushButton.addEventListener('click', function() {
       pushButton.disabled = true;
       if (isSubscribed) {
-        // TODO: Unsubscribe user
         unsubscribeUser();
       } else {
         subscribeUser();
