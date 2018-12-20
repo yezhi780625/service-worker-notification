@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Service Worker Notification</title>
+  </head>
+  <body>
+    <script src="./main.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .register('/service-worker.js')
+          .then(swRegistration => {
+            console.log('SW registered!', swRegistration);
+            return swRegistration;
+          })
+          .then(swRegistration => {
+            if ('PushManager' in window) {
+              Notification.requestPermission();
+            }
+          })
+          .catch(err => console.log('Error!', err));
+      }
+    </script>
+  </body>
+</html>

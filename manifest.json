@@ -1,0 +1,15 @@
+{
+  "name": "service-worker-notification",
+  "short_name": "sw-notification",
+  "theme_color": "#2196f3",
+  "background_color": "#2196f3",
+  "display": "browser",
+  "Scope": "/",
+  "start_url": "/",
+  "icons": [{
+    "src": "images/icon.png",
+      "sizes": "220x220",
+      "type": "image/png"
+    }],
+  "splash_pages": null
+}
