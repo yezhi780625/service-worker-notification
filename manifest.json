@@ -5,7 +5,7 @@
   "background_color": "#2196f3",
   "display": "browser",
   "Scope": "/",
-  "start_url": "/",
+  "start_url": "/service-worker-notification",
   "icons": [{
     "src": "images/icon.png",
       "sizes": "220x220",
