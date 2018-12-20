@@ -1,12 +1,4 @@
-(function(window, navigator){
-  if (Notification.permission !== 'granted') {
-    Notification.requestPermission(function(status) {
-      console.log('User Choice', status);
-      if (status !== 'granted') {
-        console.log('推播允許被拒絕了!');
-      }
-    });
-  }
+function registerSW() {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker
       .register('./service-worker.js')
@@ -15,10 +7,20 @@
         return swRegistration;
       })
       .then(swRegistration => {
-        if (Notification.permission === 'granted') {
-          initializeUI(swRegistration);
-        }
+        initializeUI(swRegistration); 
       })
       .catch(err => console.log('Error!', err));
+  }
+}
+
+(function(window, navigator){
+  if (Notification.permission === 'default') {
+    Notification.requestPermission(function(status) {
+      if (status !== 'granted') {
+        console.log('推播允許被拒絕了!');
+      }
+    }).then(() => registerSW());
+  } else {
+    registerSW();
   }
 }(window, navigator))
