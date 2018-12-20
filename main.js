@@ -81,34 +81,33 @@ function updateBtn(isSubscribed) {
     pushButton.disabled = true;
     updateSubscriptionOnServer(null);
     return;
+  } 
+  if (isSubscribed) {
+    pushButton.textContent = 'Disable Push Messaging';
   } else {
-    swRegistration.pushManager.getSubscription().then(subscription => updateSubscriptionOnServer(subscription));
-    if (isSubscribed) {
-    pushButton.addEventListener('click', function() {
-      pushButton.disabled = true;
-      if (isSubscribed) {
-        unsubscribeUser();
-      } else {
-        subscribeUser();
-      }
-    });
-      pushButton.textContent = 'Disable Push Messaging';
-    } else {
-      pushButton.textContent = 'Enable Push Messaging';
-    }
-    pushButton.disabled = false;
+    pushButton.textContent = 'Enable Push Messaging';
   }
+  pushButton.disabled = false;
 }
 
 function initializeUI(swReg) {
+  pushButton.addEventListener('click', function() {
+    pushButton.disabled = true;
+    if (isSubscribed) {
+      unsubscribeUser();
+    } else {
+      subscribeUser();
+    }
+  });
   swRegistration = swReg;
   swRegistration.pushManager.getSubscription().then(subscription => {
     isSubscribed = !(subscription === null);
+    updateSubscriptionOnServer(subscription);
     if (isSubscribed) {
       console.log('User is subscribed.');
     } else {
       console.log('User is not subscribed.');
     }
-    updateBtn(isSubscribed);
+    updateBtn();
   });
 }
