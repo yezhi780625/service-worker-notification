@@ -4,7 +4,8 @@ let swRegistration = null;
 // subscribeButtonDOM.addEventListener('click');
 
 const applicationServerPublicKey =
-  'BEtUR4TZz5UlAInzSKpPDn9sBm-OJD_x2GEzB4LeZbH_Ff36T1Vvmgj06MgEln-KskAzxK7YgmB8ldNKLP9wFgs';
+'BPpyFuVEgyovubPpdSsTPM9bu7AkBXP21fmM8wMe85uAsZ41rEy6aAC-9InULgH3P2kQz8EjatwGBTpvurK6NeA';
+  // 'BEtUR4TZz5UlAInzSKpPDn9sBm-OJD_x2GEzB4LeZbH_Ff36T1Vvmgj06MgEln-KskAzxK7YgmB8ldNKLP9wFgs';
 
 function urlB64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
